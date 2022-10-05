@@ -17,9 +17,9 @@ jobs:
       runners: ${{ steps.getrunners.outputs.runners }}
     steps:
     - name: Run a multi-line script
+      uses: odelmotte/action-deployment-group@main
       id: getrunners
       env:
         GITHUB_TOKEN: ${{ secrets.ADMINORG }}
-      uses: odelmotte/action-deployment-group
       with:
         group-name: 'toto'
