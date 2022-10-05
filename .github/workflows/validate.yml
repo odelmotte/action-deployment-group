@@ -1,0 +1,25 @@
+
+name: List all agents
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  listagents:
+    name: 📃 List agents
+    runs-on: ubuntu-latest
+    permissions: read-all
+    outputs:
+      runners: ${{ steps.getrunners.outputs.runners }}
+    steps:
+    - name: Run a multi-line script
+      id: getrunners
+      env:
+        GITHUB_TOKEN: ${{ secrets.ADMINORG }}
+      uses: odelmotte/action-deployment-group
+      with:
+        group-name: 'toto'

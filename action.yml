@@ -1,0 +1,19 @@
+name: 'action-deployment-group'
+description: 'Greet someone'
+inputs:
+  group-name:  # id of input
+    description: 'Runner Group hosting the agents. If empty, uses the runners associated to the repo'
+    required: false
+    default: ''
+secrets
+outputs:
+  runners:
+    description: "List of agents matching the filter. The format is an object with a proprerty hosts containing an array of runner names"
+branding:
+  icon: 'box'
+  color: 'red'
+runs:
+  using: "composite"
+  steps:
+  - run: echo Hello ${{ inputs.who-to-greet }}.
+    shell: bash
